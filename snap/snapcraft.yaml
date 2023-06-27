@@ -45,5 +45,5 @@ parts:
       find . -type f -executable -exec strip {} \;
 
       # Copy the runtime files
-      cp -r "${CRAFT_PART_BUILD}/runtime" "${CRAFT_PART_INSTALL}/"
-      rm -r "${CRAFT_PART_INSTALL}/runtime/grammars/sources"
+      cp -r "${CRAFT_PART_BUILD}/runtime" "${CRAFT_PART_INSTALL}/bin/"
+      rm -r "${CRAFT_PART_INSTALL}/bin/runtime/grammars/sources"
