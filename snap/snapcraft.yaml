@@ -41,9 +41,9 @@ parts:
     override-build: |
       craftctl default
 
-      # Strip executables
-      find . -type f -executable -exec strip {} \;
-
       # Copy the runtime files
       cp -r "${CRAFT_PART_BUILD}/runtime" "${CRAFT_PART_INSTALL}/bin/"
       rm -r "${CRAFT_PART_INSTALL}/bin/runtime/grammars/sources"
+
+      # Strip executables
+      find "${CRAFT_PART_INSTALL}" -type f -executable -exec strip {} \;
