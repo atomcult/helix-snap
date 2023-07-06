@@ -15,10 +15,6 @@ description: |
   * Smart, incremental syntax highlighting and code editing via tree-sitter
   * Written in Rust
 
-  New to Helix? Read the [docs](https://docs.helix-editor.com/)!
-  Coming from Vim? Read about the [differences](https://github.com/helix-editor/helix/wiki/Differences-from#vim)!
-  Want answers to common questions? Check the [FAQ](https://github.com/helix-editor/helix/wiki/FAQ)!
-
 grade: stable
 confinement: classic
 
