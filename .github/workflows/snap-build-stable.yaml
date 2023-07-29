@@ -1,0 +1,25 @@
+name: Stable Snap Build
+
+on: push
+
+jobs:
+  build_snap:
+    name: Build job for stable Helix snap
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build snap
+        uses: snapcore/action-build@v1
+        with:
+          build-info: true
+          snapcraft-channel: latest/edge
+        id: build-snap
+      - run: |
+          sudo snap install --dangerous --classic ${{ steps.build-snap.outputs.snap }}
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: helix-snap
+          path: ${{ steps.build-snap.outputs.snap }}
