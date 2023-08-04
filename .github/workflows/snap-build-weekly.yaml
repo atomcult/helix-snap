@@ -21,6 +21,13 @@ jobs:
         id: build-snap
       - run: |
           sudo snap install --dangerous --classic ${{ steps.build-snap.outputs.snap }}
+      - name: Publish to Edge
+        uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+        with:
+          snap: ${{ steps.build-snap.outputs.snap }}
+          release: edge
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
