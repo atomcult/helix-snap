@@ -1,6 +1,6 @@
 name: Stable Snap Build
 
-on: push
+on: workflow_dispatch
 
 jobs:
   build_snap:
