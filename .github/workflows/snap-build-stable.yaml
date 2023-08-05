@@ -6,7 +6,6 @@ jobs:
   build_snap:
     name: Build job for stable Helix snap
     runs-on: ubuntu-22.04
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
