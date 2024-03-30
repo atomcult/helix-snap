@@ -27,7 +27,7 @@ parts:
     plugin: rust
     rust-path: [helix-term]
     source: https://github.com/helix-editor/helix.git
-    source-tag: "23.10"
+    source-tag: "24.03"
     override-pull: |
       craftctl default
       craftctl set version="$(git describe --tags --always)"
