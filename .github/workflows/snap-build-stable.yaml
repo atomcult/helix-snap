@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
   build_snap:
     name: Build job for stable Helix snap
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -13,7 +13,7 @@ jobs:
         uses: snapcore/action-build@v1
         with:
           build-info: true
-          snapcraft-channel: latest/edge
+          snapcraft-channel: latest/stable
         id: build-snap
       - run: |
           sudo snap install --dangerous --classic ${{ steps.build-snap.outputs.snap }}
