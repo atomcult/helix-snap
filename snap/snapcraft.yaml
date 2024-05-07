@@ -1,5 +1,5 @@
 name: helix
-base: core22
+base: core24
 adopt-info: helix
 license: MPL-2.0
 source-code: https://github.com/atomcult/helix-snap
