@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: weekly
       - name: Build snap
@@ -30,7 +30,7 @@ jobs:
           snap: ${{ steps.build-snap.outputs.snap }}
           release: edge
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: helix-snap
           path: ${{ steps.build-snap.outputs.snap }}
