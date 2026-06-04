@@ -21,6 +21,8 @@ confinement: classic
 apps:
   helix:
     command: bin/hx
+    environment:
+      PATH: ${SNAP}/usr/bin:${PATH}
 
 parts:
   helix:
@@ -42,3 +44,12 @@ parts:
 
       # Strip executables
       find "${CRAFT_PART_INSTALL}" -type f -executable -exec strip {} \;
+
+  wl-copy:
+    plugin: nil
+    stage-packages:
+      - wl-clipboard
+    build-attributes:
+      - enable-patchelf
+    stage:
+      - -usr/share
