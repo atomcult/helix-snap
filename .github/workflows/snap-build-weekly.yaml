@@ -7,21 +7,26 @@ on:
 
 jobs:
   build_snap:
-    name: Build job for weekly Helix snap
+    name: Build weekly Helix snap
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: weekly
+
+      - name: Use latest helix commit
+        run: |
+          sed -i 's/source-tag:.*/source-branch: master/' snap/snapcraft.yaml
+
       - name: Build snap
         uses: snapcore/action-build@v1
         with:
           build-info: true
           snapcraft-channel: latest/stable
         id: build-snap
+
       - run: |
           sudo snap install --dangerous --classic ${{ steps.build-snap.outputs.snap }}
+
       - name: Publish to Edge
         uses: snapcore/action-publish@v1
         env:
@@ -29,6 +34,7 @@ jobs:
         with:
           snap: ${{ steps.build-snap.outputs.snap }}
           release: edge
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
